@@ -4,7 +4,7 @@ class CreateRefugees < ActiveRecord::Migration[5.1]
       t.string :countryOfOrigin
       t.integer :refugees
       t.string :countryOfAsylum
-      
+
       t.timestamps
     end
   end
