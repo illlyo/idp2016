@@ -8,8 +8,8 @@ def show
 end
 
 def create
-  refugee = Refugee.new(countryOfOrigin: params[:countryOfOrigin],
-                     countryOfAsylum: params[:countryOfAsylum],
+  refugee = Refugee.new(country_of_origin: params[:country_of_origin],
+                     country_of_asylum: params[:country_of_asylum],
                      refugees: params[:refugees])
                      render json: {status: "create successful"}
 end
@@ -21,17 +21,17 @@ end
 
 def update
   refugee = Refugee.update(params[:id],
-                        countryOfOrigin: params[:countryOfOrigin],
-                        countryOfAsylum: params[:countryOfAsylum],
+                        country_of_origin: params[:country_of_origin],
+                        country_of_asylum: params[:country_of_asylum],
                         refugees: params[:refugees])
                         render json: {status: "update successful"}
 end
 
 def search
-  if params[:type] == "countryOfOrigin"
-    result = Refugee.where("countryOfOrigin ILIKE ?", "%#{params[:query]}%")
-  elsif params[:type] == "countryOfAsylum"
-    result = Refugee.where("countryOfAsylum ILIKE?", "%#{params[:query]}%")
+  if params[:type] == "country_of_origin"
+    result = Refugee.where("country_of_origin ILIKE ?", "%#{params[:query]}%")
+  elsif params[:type] == "country_of_asylum"
+    result = Refugee.where("country_of_asylum ILIKE?", "%#{params[:query]}%")
   else
     result = "please specify contry of origin or asylum in your 'type' parameter"
   end
