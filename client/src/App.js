@@ -36,9 +36,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <section id="intro">Refugee Data of 2016</section>
+        <div id="map"></div>
+        <div id="legend"></div>
         <div>
               {(this.state.apiDataLoaded) ? this.showRefugeesOnPage() : <p>Loading...</p>}
         </div>
+        <footer>Created by ileana with &hearts;</footer>
       </div>
     );
   }
