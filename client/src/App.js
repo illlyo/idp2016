@@ -1,5 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
+import Map from './components/Map';
+// import { geomap } from 'd3-geomap';
+// import { select, call } from 'd3-selection';
+import Footer from './components/Footer';
+
+
+// var map = geomap()
+//   .geofile('/d3-geomap/topojson/world/countries.json');
+//
+//   select('#map')
+//   .call(map.draw, map);
 
 class App extends Component {
   constructor(){
@@ -17,32 +28,24 @@ class App extends Component {
       }
     }).then(res => res.json()).then((jsonRes) => {
       this.setState({
-        apiData: jsonRes,
-        apiDataLoaded: true,
+        refugeeData: jsonRes,
+        refugeeDataReceived: true,
       });
     });
   }
 
-  showRefugeesOnPage() {
-  return this.state.apiData.map((refugee) => {
-    return (
-      <div className="refugee" key={refugee.id}>
-        <p>{refugee.refugees} Refugees from {refugee.country_of_origin} fled to {refugee.country_of_asylum} in 2016.</p>
-      </div>
-    );
-  });
-}
 
   render() {
     return (
       <div className="App">
+        <div id="map" ></div>
         <section id="intro">Refugee Data of 2016</section>
-        <div id="map"></div>
+        {(this.state.refugeeDataReceived) ? <Map refugeeData={this.state.refugeeData}
+                                                 width={1000}
+                                                 height={500} /> :
+                                            <p>Loading...</p>}
         <div id="legend"></div>
-        <div>
-              {(this.state.apiDataLoaded) ? this.showRefugeesOnPage() : <p>Loading...</p>}
-        </div>
-        <footer>Created by ileana with &hearts;</footer>
+        <Footer />
       </div>
     );
   }

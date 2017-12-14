@@ -19,3 +19,7 @@ footer{
   width: 100%;
   bottom: 0;
 }
+
+.worldBackground {
+  background-color: black;
+}
