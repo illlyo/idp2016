@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import './App.css';
 import Map from './components/Map';
@@ -40,9 +41,7 @@ class App extends Component {
       <div className="App">
         <div id="map" ></div>
         <section id="intro">Refugee Data of 2016</section>
-        {(this.state.refugeeDataReceived) ? <Map refugeeData={this.state.refugeeData}
-                                                 width={1000}
-                                                 height={500} /> :
+        {(this.state.refugeeDataReceived) ? <Map /> :
                                             <p>Loading...</p>}
         <div id="legend"></div>
         <Footer />
