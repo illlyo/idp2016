@@ -1,2 +1,3 @@
 class Refugee < ApplicationRecord
+
 end

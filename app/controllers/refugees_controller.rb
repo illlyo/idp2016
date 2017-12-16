@@ -1,4 +1,10 @@
 class RefugeesController < ApplicationController
+
+  def post
+    originx = Refugee.pluck(:country_of_origin)
+    latlong = HTTParty.get('https://restcountries.eu/rest/v2/name/brazil', :headers =>{'Content-Type' => 'application/json'})
+  end
+  
   def index
   render json: Refugee.all
 end
