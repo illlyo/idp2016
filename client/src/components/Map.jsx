@@ -69,11 +69,43 @@ class Map extends Component {
                 r={ origin_data.refugees / 30000 }
                 fill="rgba(200, 90, 181, .5)"
                 stroke="#FFFFFF"
-                className="marker"
+                className="asylum-marker"
                 onClick={ () => this.handleMarkerClick(i) }
               />
             ))
           }
+        </g>
+        <g className="markers">
+          {
+            this.state.origin.map((origin_data, i) => (
+              <circle
+                key={ `marker-${i}` }
+                cx={ this.projection()([origin_data.origin_coordinates_y, origin_data.origin_coordinates_x])[0] }
+                cy={ this.projection()([origin_data.origin_coordinates_y, origin_data.origin_coordinates_x])[1] }
+                r={ origin_data.refugees / 30000 }
+                fill="rgba(5, 26, 200, .5)"
+                stroke="#FFFFFF"
+                className="origin-marker"
+                onClick={ () => this.handleMarkerClick(i) }
+              />
+            ))
+          }
+        </g>
+        <g>
+          {
+            this.state.origin.map((origin_data, i) => (
+          <line
+            key={ `marker-${i}` }
+            x1={ this.projection()([origin_data.origin_coordinates_y, origin_data.origin_coordinates_x])[0]}
+            y1={ this.projection()([origin_data.origin_coordinates_y, origin_data.origin_coordinates_x])[1]}
+            x2={ this.projection()([origin_data.asylum_coordinates_y, origin_data.asylum_coordinates_x])[0]}
+            y2={ this.projection()([origin_data.asylum_coordinates_y, origin_data.asylum_coordinates_x])[1]}
+            stroke="rgba(200, 90, 181, .5)"
+            strokeWidth="0.5"
+            className="line"
+          />
+        ))
+      }
         </g>
       </svg>
     )
