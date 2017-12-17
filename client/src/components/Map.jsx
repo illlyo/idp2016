@@ -67,7 +67,7 @@ class Map extends Component {
                 cx={ this.projection()([origin_data.asylum_coordinates_y, origin_data.asylum_coordinates_x])[0] }
                 cy={ this.projection()([origin_data.asylum_coordinates_y, origin_data.asylum_coordinates_x])[1] }
                 r={ origin_data.refugees / 30000 }
-                fill="#E91E63"
+                fill="rgba(200, 90, 181, .5)"
                 stroke="#FFFFFF"
                 className="marker"
                 onClick={ () => this.handleMarkerClick(i) }
