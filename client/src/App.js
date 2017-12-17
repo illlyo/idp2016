@@ -2,16 +2,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Map from './components/Map';
-// import { geomap } from 'd3-geomap';
-// import { select, call } from 'd3-selection';
 import Footer from './components/Footer';
 
-
-// var map = geomap()
-//   .geofile('/d3-geomap/topojson/world/countries.json');
-//
-//   select('#map')
-//   .call(map.draw, map);
 
 class App extends Component {
   constructor(){
@@ -35,13 +27,12 @@ class App extends Component {
     });
   }
 
-
   render() {
     return (
       <div className="App">
         <div id="map" ></div>
         <section id="intro">Refugee Data of 2016</section>
-        {(this.state.refugeeDataReceived) ? <Map /> :
+        {(this.state.refugeeDataReceived) ? <Map refugeeData={this.state.refugeeData} /> :
                                             <p>Loading...</p>}
         <div id="legend"></div>
         <Footer />
