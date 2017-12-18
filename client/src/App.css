@@ -39,7 +39,7 @@ circle.origin-marker {
 }
 
 line.line {
-  animation: 3s ease-out 0s 1 appear;
+  animation: 1s ease-out 0s 1 appear;
 }
 
 @keyframes appear {
@@ -62,8 +62,20 @@ line.line:hover {
 }
 
 .info-box{
-  height: 30px;
-  width: 30px;
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  height: 100px;
+  width: 20%;
   background-color: blue;
   color: white;
+  overflow: scroll;
+}
+
+h1{
+  font-size: 13px;
+}
+
+li {
+  font-size: 10px;
 }

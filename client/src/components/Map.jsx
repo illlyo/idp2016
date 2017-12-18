@@ -14,9 +14,9 @@ class Map extends Component {
     }
     this.handleCountryClick = this.handleCountryClick.bind(this)
     this.handleMarkerClick = this.handleMarkerClick.bind(this)
-    this.emptyfunction = this.emptyfunction.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.decideWhichToRender = this.decideWhichToRender.bind(this)
+    this.getSum = this.getSum.bind(this)
   }
 
   projection() {
@@ -28,8 +28,6 @@ class Map extends Component {
   handleCountryClick(countryIndex) {
     console.log("Clicked on country: ", this.state.worlddata[countryIndex])
     console.log(this.props.refugeeData)
-
-    console.log(this.props.refugeeData.filter((d,i) => d.country_of_asylum == this.state.selectedOriginCountry))
   }
 
   handleMarkerClick(i) {
@@ -44,7 +42,7 @@ class Map extends Component {
   this.setState({
     [name]: value,
   })
-}
+  }
 
   componentDidMount() {
     fetch("/world-110m.json")
@@ -56,23 +54,21 @@ class Map extends Component {
         response.json().then(worlddata => {
           this.setState({
             worlddata: feature(worlddata, worlddata.objects.countries).features,
-          })
+        })
         })
       })
-
   }
-
-  emptyfunction() {
-    console.log("TRIGGERED")
-  }
-
 
   decideWhichToRender(e){
-      e.preventDefault();
+    e.preventDefault();
+    console.log(this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry));
     let origin = this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry);
       return
-
     }
+
+    getSum(total, num) {
+      return total + num;
+  }
 
   render() {
     return (
@@ -151,7 +147,13 @@ class Map extends Component {
         <input type="submit" className="submit_button" value="submit" />
       </form>
       <div className="info-box">
-        <h1>stuff goes here</h1>
+        <h1>{this.state.selectedOriginCountry} had a total # of refugees</h1>
+        <ul>
+          { (this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry)).map((d, i) =>
+            <li>{d.refugees} refugees found asylum in {d.country_of_asylum}</li>
+          )}
+        </ul>
+
       </div>
     </div>
     )
@@ -159,3 +161,5 @@ class Map extends Component {
 }
 
 export default Map;
+
+//{this.props.refugeeData.filter((d,i) => d.refugees.reduce(this.getSum))}
