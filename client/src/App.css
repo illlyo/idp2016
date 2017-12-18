@@ -54,3 +54,16 @@ line.line {
 line.line:hover {
   stroke: yellow;
 }
+
+#searchForm {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.info-box{
+  height: 30px;
+  width: 30px;
+  background-color: blue;
+  color: white;
+}
