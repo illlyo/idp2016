@@ -29,7 +29,6 @@ footer{
 path.country:hover {
     stroke: yellow;
     fill: rgba(180, 17, 30, 0.7);
-    cursor: pointer;
 }
 
 circle.asylum-marker {

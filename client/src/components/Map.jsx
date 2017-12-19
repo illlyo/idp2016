@@ -12,6 +12,7 @@ class Map extends Component {
       origin: this.props.refugeeData,
       asylum: this.props.refugeeData,
       selectedOriginCountry: null,
+      dropDownArray: [],
       sum: null,
       data: [5, 2, 7, 1, 1, 3, 4, 9],
       piewidth: 70,
@@ -65,13 +66,17 @@ class Map extends Component {
   }
 
   sumToRender(){
+
     return ((this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry)).map((d, i) => d.refugees)).reduce((accumulator, currentValue) => accumulator + currentValue).toString()
   }
 
   decideWhichToRender(e){
     e.preventDefault();
-    console.log(this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry));
-    console.log((((this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry)).map((d, i) => d.refugees)).reduce((accumulator, currentValue) => accumulator + currentValue)).toString())
+
+    console.log(Object.keys((this.state.origin.map((d, i) => d.country_of_origin)).reduce((acc, val) => {
+      acc[val] = true;
+      return acc;
+    }, {})).map((d, i) => d));
       return
     }
 
@@ -145,8 +150,11 @@ class Map extends Component {
       <form id='searchForm' onSubmit={this.decideWhichToRender} >
         <select type="text" name="selectedOriginCountry" onChange={this.handleInputChange} >
           <option value={null}> Select Country of Origin </option>
-          {this.state.origin.map((d,i) => (
-            <option key={ `marker-${i}` } value={ d.country_of_origin }> {d.country_of_origin} </option>
+          {Object.keys((this.state.origin.map((d, i) => d.country_of_origin)).reduce((acc, val) => {
+            acc[val] = true;
+            return acc;
+          }, {})).map((d, i) => (
+            <option key={ `marker-${i}` } value={ d }> {d} </option>
           ))}
         </select>
         <input type="submit" className="submit_button" value="submit" />
@@ -159,7 +167,6 @@ class Map extends Component {
             <li><span className="refugee-count">{d.refugees}</span>  Refugees found asylum in {d.country_of_asylum}</li>
           )}
         </ul>
-
       </div>) }
     </div>
 
