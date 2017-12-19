@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { geoMercator, geoPath } from "d3-geo"
 import { feature } from "topojson-client"
 
+
 class Map extends Component {
   constructor(props) {
     super(props)
@@ -11,12 +12,16 @@ class Map extends Component {
       origin: this.props.refugeeData,
       asylum: this.props.refugeeData,
       selectedOriginCountry: null,
+      sum: null,
+      data: [5, 2, 7, 1, 1, 3, 4, 9],
+      piewidth: 70,
+      pieheight: 70,
     }
     this.handleCountryClick = this.handleCountryClick.bind(this)
     this.handleMarkerClick = this.handleMarkerClick.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.decideWhichToRender = this.decideWhichToRender.bind(this)
-    this.getSum = this.getSum.bind(this)
+    this.sumToRender = this.sumToRender.bind(this)
   }
 
   projection() {
@@ -59,16 +64,16 @@ class Map extends Component {
       })
   }
 
+  sumToRender(){
+    return ((this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry)).map((d, i) => d.refugees)).reduce((accumulator, currentValue) => accumulator + currentValue).toString()
+  }
+
   decideWhichToRender(e){
     e.preventDefault();
     console.log(this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry));
-    let origin = this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry);
+    console.log((((this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry)).map((d, i) => d.refugees)).reduce((accumulator, currentValue) => accumulator + currentValue)).toString())
       return
     }
-
-    getSum(total, num) {
-      return total + num;
-  }
 
   render() {
     return (
@@ -129,8 +134,8 @@ class Map extends Component {
             y1={ this.projection()([d.origin_coordinates_y, d.origin_coordinates_x])[1]}
             x2={ this.projection()([d.asylum_coordinates_y, d.asylum_coordinates_x])[0]}
             y2={ this.projection()([d.asylum_coordinates_y, d.asylum_coordinates_x])[1]}
-            stroke="rgba(200, 90, 181, .5)"
-            strokeWidth="0.7"
+            stroke="rgba(200, 70, 70, .7)"
+            strokeWidth="1.5"
             className="line"
           />
         ))
@@ -146,20 +151,20 @@ class Map extends Component {
         </select>
         <input type="submit" className="submit_button" value="submit" />
       </form>
-      <div className="info-box">
-        <h1>{this.state.selectedOriginCountry} had a total # of refugees</h1>
+      { this.state.selectedOriginCountry &&
+      (<div className="info-box">
+        <h1><span className="country-bold">{this.state.selectedOriginCountry}</span> had a total of <span className="refugee-total">{this.sumToRender()}</span> refugees</h1>
         <ul>
           { (this.props.refugeeData.filter((d,i) => d.country_of_origin == this.state.selectedOriginCountry)).map((d, i) =>
-            <li>{d.refugees} refugees found asylum in {d.country_of_asylum}</li>
+            <li><span className="refugee-count">{d.refugees}</span>  Refugees found asylum in {d.country_of_asylum}</li>
           )}
         </ul>
 
-      </div>
+      </div>) }
     </div>
+
     )
   }
 }
 
 export default Map;
-
-//{this.props.refugeeData.filter((d,i) => d.refugees.reduce(this.getSum))}

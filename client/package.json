@@ -16,6 +16,7 @@
     "d3-transition": "^1.1.1",
     "d3plus-geomap": "^0.4.15",
     "react": "^16.2.0",
+    "react-d3-basic": "^1.6.11",
     "react-d3-map": "^0.8.3",
     "react-dom": "^16.2.0",
     "react-input-enhancements": "^0.5.4",
