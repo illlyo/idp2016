@@ -1,8 +1,7 @@
 # Refugee Flow App
 
-This app uses data visualization
+This app uses data visualization from the downloadable CSV file <http://www.unhcr.org/globaltrends2016/>. Inspiration came from <https://medium.com/@zimrick/how-to-create-pure-react-svg-maps-with-topojson-and-d3-geo-e4a6b6848a98>.
 
-``` code here ```
 ***
 
 ## Technologies
@@ -13,7 +12,12 @@ This app uses data visualization
 
 * System dependencies
 
-* Configuration
+**React & Component** from _react_
+**geoMercator, geoPath** from _d3-geo_
+**feature** from _topojson-client_
+gem 'react-rails'
+
+I also added a proxy in my package.json in my react-app _http://localhost:3001_
 
 * Database creation
 
