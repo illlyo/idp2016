@@ -157,7 +157,6 @@ class Map extends Component {
             <option key={ `marker-${i}` } value={ d }> {d} </option>
           ))}
         </select>
-        <input type="submit" className="submit_button" value="submit" />
       </form>
       { this.state.selectedOriginCountry &&
       (<div className="info-box">

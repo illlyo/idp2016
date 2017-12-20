@@ -10,12 +10,12 @@ This app uses data visualization from the downloadable CSV file <http://www.unhc
 
 * **React.js** as Front-end development with **D3.js** library for Data visualization.
 
-* System dependencies
+* System dependencies:
 
-**React & Component** from _react_
-**geoMercator, geoPath** from _d3-geo_
-**feature** from _topojson-client_
-gem 'react-rails'
+    **React & Component** from _react_
+    **geoMercator, geoPath** from _d3-geo_
+    **feature** from _topojson-client_
+    gem 'react-rails'
 
 I also added a proxy in my package.json in my react-app _http://localhost:3001_
 
@@ -35,5 +35,3 @@ I also added a proxy in my package.json in my react-app _http://localhost:3001_
 ```
 foreman start -p 3000
 ```
-
-* ...
