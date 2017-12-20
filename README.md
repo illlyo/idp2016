@@ -7,7 +7,9 @@ This app uses data visualization
 
 ## Technologies
 
-* **Ruby** version : ruby 2.4.1p111
+* **Ruby** version : ruby 2.4.1p111 , with Rails to create and use as an API.  
+
+* **React.js** as Front-end development with **D3.js** library for Data visualization.
 
 * System dependencies
 
@@ -29,7 +31,5 @@ This app uses data visualization
 ```
 foreman start -p 3000
 ```
-
-* Deployment instructions
 
 * ...
