@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :refugees
   get "/refugees/search/:query", to: "refugees#search"
   get 'countries', to: "refugees#countries"
+  root to: "root#index"
 end
