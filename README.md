@@ -1,6 +1,7 @@
 # Refugee Flow App
 
-This app uses data visualization from the downloadable CSV file <http://www.unhcr.org/globaltrends2016/>. Inspiration came from <https://medium.com/@zimrick/how-to-create-pure-react-svg-maps-with-topojson-and-d3-geo-e4a6b6848a98>.
+This app uses data visualization from the downloadable CSV file <http://www.unhcr.org/globaltrends2016/>.
+The viewer will be able to grasp a visual representation of the paths of the internationally displaced peoples(IDP) that migrated in the year of 2016. Inspiration and reference came from <https://medium.com/@zimrick/how-to-create-pure-react-svg-maps-with-topojson-and-d3-geo-e4a6b6848a98>.
 
 ***
 
