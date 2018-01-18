@@ -1,5 +1,5 @@
 # Refugee Flow App
-
+Check out the page here: https://idp-refugee-flow-map.herokuapp.com/ 
 ![browser-screenshot](/public/screen.png)
 
 This app uses data visualization from the downloadable CSV file <http://www.unhcr.org/globaltrends2016/>.
